@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gitcode</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <p class="text-center fs-1 my-3">API Words</p>
+        <p class="text-center fs-3 my-3">Git version control project</p>
+        <p class="text-start fs-5">In this table i listed a group of words fetched from API. These are coloured following the next conditions based on the length of the specific word. Conditions are listed below.</p>
+        <ul>
+            <li>Longest words: red</li>
+            <li>Shorter than 5 character: blue</li>
+        </ul>
+        <p class="text-start small-letters">Notice that the longest words' group can be manipulated by adding a 2 character longer word than the actual longest one. The blue colouring goes only on the new inserted word.</p>
+        <p class="text-start fs-5">You can save words to local storage by click the button next to the words. If you would like to insert new words on the list, you can write and submit it in the input field.</p>
+     <!-- html table start -->
+        <table id="wordTable" class="table text-center">
+            <thead>
+                <tr>
+                    <th colspan="2">Word list</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>test cell</td>
+                    <td><button type="button" class="btn btn-primary">Save</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- html table end -->
+
+        <!-- word input area -->
+            <p class="my-3 fs-3 text-start">Add new word to the list</p>
+            <div class="col-5 align-self-center">
+                <input class="form-control" type="text">
+                <button type="button" class="btn btn-primary mt-3">Add</button>
+            </div>
+        <!-- word input area ends -->
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
