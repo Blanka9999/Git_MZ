@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
         <p class="text-center fs-1 my-3">API Words</p>
         <p class="text-center fs-3 my-3">Git version control project</p>
@@ -19,7 +18,21 @@
         </ul>
         <p class="text-start small-letters">Notice that the longest words' group can be manipulated by adding a 2 character longer word than the actual longest one. The blue colouring goes only on the new inserted word.</p>
         <p class="text-start fs-5">You can save words to local storage by click the button next to the words. If you would like to insert new words on the list, you can write and submit it in the input field.</p>
-    <!-- <button type="button" class="btn btn-primary" onclick="test()">test</button> -->
+     <!-- html table start -->
+        <table id="wordTable" class="table text-center">
+            <thead>
+                <tr>
+                    <th colspan="2">Word list</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>test cell</td>
+                    <td><button type="button" class="btn btn-primary">Save</button></td>
+                </tr>
+            </tbody>
+        </table>
+     <!-- html table end -->
 
     </div>
 
