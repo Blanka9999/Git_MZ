@@ -13,12 +13,21 @@
         <p class="text-center fs-3 my-3">Git version control project</p>
         <p class="text-start fs-5">In this table i listed a group of words fetched from API. These are coloured following the next conditions based on the length of the specific word. Conditions are listed below.</p>
         <ul>
-            <li>Longest words: red</li>
-            <li>Shorter than 5 character: blue</li>
+            <li>Longest words: red colouring</li>
+            <li>Shorter than 5 character: blue colouring</li>
         </ul>
-        <p class="text-start small-letters">Notice that the longest words' group can be manipulated by adding a 2 character longer word than the actual longest one. The blue colouring goes only on the new inserted word.</p>
-        <p class="text-start fs-5">You can save words to local storage by click the button next to the words. If you would like to insert new words on the list, you can write and submit it in the input field.</p>
-     <!-- html table start -->
+        <p class="text-start small-letters">Notice that the longest words' group can be manipulated by adding a 2 character longer word than the actual longest one. The red colouring goes only on the new inserted word.</p>
+        <p class="text-start fs-5">You can save words to local storage by click on the button next to the words. If you would like to insert new words on the list, you can write and submit it in the input field.</p>
+     
+        <!-- word input area -->
+        <p class="my-3 fs-3 text-start">Add new word to the list</p>
+        <div class="col-5 align-self-center">
+            <input class="form-control" type="text" placeholder="Type word...">
+            <button type="button" class="btn btn-primary my-3">Submit</button>
+        </div>
+        <!-- word input area ends -->
+
+        <!-- html table start -->
         <table id="wordTable" class="table text-center">
             <thead>
                 <tr>
@@ -34,13 +43,6 @@
         </table>
         <!-- html table end -->
 
-        <!-- word input area -->
-            <p class="my-3 fs-3 text-start">Add new word to the list</p>
-            <div class="col-5 align-self-center">
-                <input class="form-control" type="text">
-                <button type="button" class="btn btn-primary mt-3">Add</button>
-            </div>
-        <!-- word input area ends -->
     </div>
 
     <script src="script.js"></script>
