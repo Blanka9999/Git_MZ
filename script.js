@@ -1,5 +1,24 @@
-const b = 5
 
-function test() {
-    console.log("button works, there's b: "+b)
-}
+fetch("https://api.siposm.hu/word")
+    .then(response => response.json())
+    .then(words => {
+        const tableBody = document.querySelector("#wordTable tbody");
+
+        words.forEach(word => {
+            const row = document.createElement("tr");
+            const data = document.createElement("td");
+            const saveButton = document.createElement("button")
+
+            data.textContent = word;
+            saveButton.textContent = "Save";
+            saveButton.type = "button";
+            saveButton.className = "btn btn-primary my-2";
+
+            row.appendChild(data);
+            row.appendChild(saveButton);
+            tableBody.appendChild(row);
+        });
+    })
+    .catch(error => {
+        console.error("Error loading words:", error);
+    })
