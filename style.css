@@ -1,3 +1,7 @@
 .small-letters {
     font-size: 10px;
 }
+
+.border-1 {
+    border: 2;
+}
