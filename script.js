@@ -5,6 +5,7 @@ fetch("https://api.siposm.hu/word")
     .then(words => {
         const tableBody = document.querySelector("#wordTable tbody");
 
+        //const longestLength = Math.max(...words.map(word => word.length));
 
         words.forEach(word => {
             const row = document.createElement("tr");
@@ -31,11 +32,13 @@ fetch("https://api.siposm.hu/word")
             row.appendChild(buttonCell);
             tableBody.appendChild(row);
         });
+       
+        longestWord();
+        console.log(longestWord());
     })
     .catch(error => {
         console.error("Error loading words:", error);
     })
-
     document.querySelector("#submitWord").addEventListener("click", function() {
         const newWord = document.querySelector("#userInput").value;
 
@@ -45,6 +48,7 @@ fetch("https://api.siposm.hu/word")
         const wordCell = document.createElement("td");
         const buttonCell = document.createElement("td");
         const saveButton = document.createElement("button");
+        row.className = "border-1";
 
         wordCell.textContent = newWord;
 
@@ -61,13 +65,45 @@ fetch("https://api.siposm.hu/word")
 
         buttonCell.appendChild(saveButton);
 
+        if (newWord.length > 1) {
+            wordCell.style.color = "red";
+        }
+
         row.appendChild(wordCell);
         row.appendChild(buttonCell);
         tbody.appendChild(row);
         document.querySelector("#userInput").value = "";
-});
+        longestWord();
+    });
 
+const tBody = document.querySelector("tbody");
 
+function longestWord() {
+    const rows = tBody.querySelectorAll("tr");
+    let longestLength = 0;
+    rows.forEach(row => {
+        const wordCell = row.cells[0];
+        const wordLength = wordCell.textContent.length;
+        if (wordLength > longestLength) {
+            longestLength = wordLength;
+        }
+    });
+    
+        rows.forEach(row => {
+            const wordCell = row.cells[0];
+            const length = wordCell.textContent.length;
 
-
-
+        if (
+                length === longestLength ||
+                length === longestLength - 1 ||
+                length === longestLength - 2
+            ) {
+                wordCell.style.color = "red";
+            } else if (length < 5) {
+                wordCell.style.color = "blue";
+            } else {
+                wordCell.style.color = "";
+            }
+    });
+    return longestLength;
+    }
