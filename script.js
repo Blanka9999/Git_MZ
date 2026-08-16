@@ -5,8 +5,6 @@ fetch("https://api.siposm.hu/word")
     .then(words => {
         const tableBody = document.querySelector("#wordTable tbody");
 
-        //const longestLength = Math.max(...words.map(word => word.length));
-
         words.forEach(word => {
             const row = document.createElement("tr");
             const data = document.createElement("td");
@@ -27,24 +25,21 @@ fetch("https://api.siposm.hu/word")
             });
 
             buttonCell.appendChild(saveButton);
-
             row.appendChild(data);
             row.appendChild(buttonCell);
             tableBody.appendChild(row);
         });
-       
-        longestWord();
-        console.log(longestWord());
+        updateColours();
+        console.log(updateColours());
     })
     .catch(error => {
         console.error("Error loading words:", error);
     })
     document.querySelector("#submitWord").addEventListener("click", function() {
         const newWord = document.querySelector("#userInput").value;
-
         const tbody = document.querySelector("#wordTable tbody");
-        const row = document.createElement("tr");
 
+        const row = document.createElement("tr");
         const wordCell = document.createElement("td");
         const buttonCell = document.createElement("td");
         const saveButton = document.createElement("button");
@@ -53,32 +48,28 @@ fetch("https://api.siposm.hu/word")
         wordCell.textContent = newWord;
 
         saveButton.textContent = "Save";
-            saveButton.type = "button";
-            saveButton.className = "btn btn-primary my-2";
+        saveButton.type = "button";
+        saveButton.className = "btn btn-primary my-2";
 
-            saveButton.addEventListener("click", function () {
-                if (!savedList.includes(newWord)) {
-                savedList.push(newWord);
-                localStorage.setItem("savedList", JSON.stringify(savedList));
-                }
-            });
+        saveButton.addEventListener("click", function () {
+            if (!savedList.includes(newWord)) {
+            savedList.push(newWord);
+            localStorage.setItem("savedList", JSON.stringify(savedList));
+            }
+        });
 
         buttonCell.appendChild(saveButton);
-
-        if (newWord.length > 1) {
-            wordCell.style.color = "red";
-        }
-
         row.appendChild(wordCell);
         row.appendChild(buttonCell);
         tbody.appendChild(row);
         document.querySelector("#userInput").value = "";
-        longestWord();
+
+        updateColours();
     });
 
 const tBody = document.querySelector("tbody");
 
-function longestWord() {
+function updateColours() {
     const rows = tBody.querySelectorAll("tr");
     let longestLength = 0;
     rows.forEach(row => {
@@ -89,21 +80,21 @@ function longestWord() {
         }
     });
     
-        rows.forEach(row => {
-            const wordCell = row.cells[0];
-            const length = wordCell.textContent.length;
+    rows.forEach(row => {
+        const wordCell = row.cells[0];
+        const length = wordCell.textContent.length;
 
-        if (
-                length === longestLength ||
-                length === longestLength - 1 ||
-                length === longestLength - 2
-            ) {
-                wordCell.style.color = "red";
-            } else if (length < 5) {
-                wordCell.style.color = "blue";
-            } else {
-                wordCell.style.color = "";
-            }
+    if (
+            length === longestLength ||
+            length === longestLength - 1 ||
+            length === longestLength - 2
+        ) {
+            wordCell.style.color = "red";
+        } else if (length < 5) {
+            wordCell.style.color = "blue";
+        } else {
+            wordCell.style.color = "";
+        }
     });
     return longestLength;
-    }
+}
